@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @enrollment_request.batch&.name %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @enrollment_request.student&.full_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @enrollment_request.status %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @enrollment_request.approved_at %>
+</p>
+
+<% if current_user.admin? %>
+  <p>
+    <strong>Approved by:</strong>
+    <%= @enrollment_request.approver&.full_name %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_batch_enrollment_request_path(@batch, @enrollment_request) %> |
+<%= link_to 'Back', batch_enrollment_requests_path(@batch) %>

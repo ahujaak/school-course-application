@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Batches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>School name</th>
+      <th>Course name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th colspan="3"> Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @batches.each do |batch| %>
+      <tr>
+        <td><%= batch.name %></td>
+        <td><%= @school.name %></td>
+        <td><%= @course.name %></td>
+        <td><%= batch.start_time %></td>
+        <td><%= batch.end_time %></td>
+
+        <% if can? :read, batch %>
+          <td><%= link_to 'Show', school_course_batch_path(@school, @course, batch) %></td>
+        <% end %>
+
+        <% if can? :pending_enrollment_requests, batch %>
+        <td><%= link_to 'Show Pending Enrollement Requests', pending_enrollment_requests_school_course_batch_path(@school, @course, batch) %></td>
+        <% end %>
+
+        <% if can? :approved_students, batch %>
+          <td><%= link_to 'Show Batch Students', approved_students_school_course_batch_path(@school, @course, batch) %></td>
+        <% end %>
+
+        <% if can? :manage, batch %>
+          <td><%= link_to 'Edit', edit_school_course_batch_path(@school, @course, batch) %></td>
+          <td><%= button_to 'Destroy', school_course_batch_path(@school, @course, batch), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :manage, Batch %>
+  <%= link_to 'New Batch', new_school_course_batch_path(school_id: @school.id, course_id: @course.id) %>
+<% end %>

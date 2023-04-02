@@ -1,0 +1,29 @@
+<%= form_with(model: enrollment_request, url: [@batch, @enrollment_request]) do |form| %>
+  <% if enrollment_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(enrollment_request.errors.count, "error") %> prohibited this enrollment_request from being saved:</h2>
+
+      <ul>
+        <% enrollment_request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <label>You're enrolling for batch named: <%= @batch.name %></label>
+  </p>
+  <% if can? :manage, @enrollment_request && !current_user.student? %>
+    <div class="field">
+      <%= form.label :Student %>
+      <%= form.select :student_id, options_for_select(User.student.map { |student| ["#{student.first_name} #{student.last_name}", student.id] }), {:prompt => 'Select Student'} %>
+    </div>
+  <% elsif current_user.student? %>
+    <%= form.hidden_field :student_id, value: current_user.id %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

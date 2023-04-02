@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @school.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @school.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @school.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @school.email %>
+</p>
+
+<% if can? :manage, school %>
+  <%= link_to 'Edit', edit_school_path(@school) %> |
+<% end %>
+<%= link_to 'Courses', school_courses_path(@school) %> |
+<%= link_to 'Back', schools_path %>

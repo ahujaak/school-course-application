@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<% if can? :manage, @course %>
+  <%= link_to 'Edit', edit_school_course_path(@school, @course) %> |
+<% end %>
+
+<%= link_to 'Back', school_courses_path(@school) %>

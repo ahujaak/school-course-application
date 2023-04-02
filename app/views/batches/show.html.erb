@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @batch.name %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @school.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @batch.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @batch.end_time %>
+</p>
+
+<p>
+  <strong>Total Pending Enrollment requests</strong>
+  <%= @total_pending_enrollments %>
+</p>
+
+<p>
+  <strong>Total active students</strong>
+  <%= @total_approved_enrollments %>
+</p>
+
+
+<%= link_to 'Edit', edit_school_course_batch_path(@school, @course, @batch) %> |
+<%= link_to 'Show Batch Enrollments', batch_enrollment_requests_path(@batch) %> |
+<%= link_to 'Back', school_course_batches_path(@school, @course) %> 

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= params[:role].present? ? params[:role].humanize : "User " %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role.humanize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= button_to "Create New #{params[:role].humanize}", '#', disabled: true %>
