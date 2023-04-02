@@ -6,7 +6,7 @@ This is a Ruby on Rails application that allows for the creation, and management
 - PostgreSQL@14 running on port: 5432
 - Rails version 6.1.7 - This can be installed as a gem when bundle install gets done for the first time. 
 ## Here are the steps to setup the application:
-1. **Clone** the application
+1. **Clone** the application using command on terminal - git clone git@github.com:ahujaak/school-course-application.git
 2. **cd emeritus_assignment** and do the **bundle install**
 3. Run **rails db:setup** - rails db:setup consists of 3 steps: rails db:create, migrate, and seed.
 4. We have created seed data with 3 users with different user types. The user details are mentioned in later steps.
